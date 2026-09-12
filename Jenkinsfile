@@ -27,7 +27,7 @@ pipeline {
                 echo 'Running Flake8...'
 
                 bat '''
-                    flake8 app tests
+                    python -m flake8 app tests
                 '''
             }
         }
@@ -37,7 +37,7 @@ pipeline {
                 echo 'Running unit tests...'
 
                 bat '''
-                    pytest -v
+                    python -m pytest -v
                 '''
             }
         }

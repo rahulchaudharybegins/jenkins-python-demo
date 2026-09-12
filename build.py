@@ -3,19 +3,25 @@ import shutil
 
 
 BUILD_DIR = "build"
+SOURCE_DIR = "app"
 
 
 def build_application():
     print("Starting application build...")
 
     if os.path.exists(BUILD_DIR):
+        print("Removing previous build...")
         shutil.rmtree(BUILD_DIR)
 
     os.makedirs(BUILD_DIR)
 
     shutil.copytree(
-        "app",
-        os.path.join(BUILD_DIR, "app")
+        SOURCE_DIR,
+        os.path.join(BUILD_DIR, SOURCE_DIR),
+        ignore=shutil.ignore_patterns(
+            "__pycache__",
+            "*.pyc"
+        )
     )
 
     print("Application copied to build directory.")
